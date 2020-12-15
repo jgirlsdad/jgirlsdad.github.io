@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Linear Regression</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="jumbotron" style="background-color:#00F3FF">
+      <h1 class="display-4">Regression</h1>
+      <hr class="my-4">
+      <p>
+      There are a myriad of options for performing Regression.  It was decided the best package to use is likely the <a href="https://scikit-learn.org/stable/">Scikit-learn</a> package within <b>Python</b>.  
+     </p>>
+     <p>When performing regression in a ML context, there are different approaches which favor certain aspects of your data.  One guiding feature of the data is that there are fewer than 1,000 data points in the time series and less than 20 features.  As the size of the data and features is relatively small, several of the regression techniques were tested and compared.  The models used are: 
+         <ul>
+             <li>Support Vector Regression (SVR)</li>
+             <li>Linear Regression</li>
+             <li>Bayesian Ridge (Bayesian)</li>
+             <li>Elasctic Net</li>
+             <li>Ridge Regression (Ridge)</li>
+         </ul>
+
+     </p>
+     <p>As noted in the <a href="Shift.html">Phase Shift</a> description, because the forcing from Climate Indices may not occur in real time and in fact, may be delayed by several to many month, a phase shift in the dependent variables has been analyzed as a possible outcome.  This mean that each model has been run for no phase shift (i.e real time feedback between the Climate Indices and dependant variables), but also for phase shifts of 1 month thru 12 months. 
+     </p>
+     <p>Figure 1 depicts the results for running the Regression models for all Climate indicators and for 13 different phase shifts, including the control of no phase shift (0).These initial results are very promising, with R<sup>2</sup> values as high as .9.  The highest scores are at times shifts of 3 and 4 months.  The results for several of the models over-lap , so Table-1 depicts the results for all models   and time shifts.  
+    </p>
+    <p>
+      As noted, the R<sup>2</sup> scores are high, and in fact, seemingly higher then would have been expected, so a closer analysis  is warranted.  
+    </p>
+    <p>
+      
+      The first step  is to examine the phase shifted dependant time series to be sure the phase shifting is working correctly.  Figure 2 shows the first 24 months of Denver Tmax, phase shifted at 0,3 and 6 months.  It shows that at 3 months, the seasons have shifted some, and at 6 months, there is a full shift of the seasons, where summer coincides with winter at 0 months (no shift), which  is what would be expected, so the phase shifts look reasonable.     
+    </p>
+    <p>
+      The best way to analyze how well the models are performing is comparing predicted values to the actual observations.  From Table 1, the highest scoring model is SVR at a phase shift of 4 months.  To best understand if the phase shifting actually improves accuracy, SVR will also be analyzed at no shift (0 months).  It would be easy to simply crank out mean differences and mean absolute differences between observed and predicted values, however, as this is time series data with a seasonal structure, looking at x-y plots for several years would also be useful.  One question certainly is how well do the models ferret out the seasonal signal, especially for phase shifted data. 
+    </p>
+    <p>
+      Figure 3a-b depicts the Observed and Predicted Tmax for the first and last 24 months of the training period, for Denver with no phase shift. While the seasonality is properly represented in both periods, there are some fairly large differences between the observed and predicted values, especially during the summer.  Figure 4a-b depicts the same as Figure 3, except phase shifted by 4 months, which, again, had the best R<sup>2</sup> score 0f .91.  At a 4 month shift, the SVR model does an even better job matching the seasonal structure of the observed time series and the differences seem to be a bit smaller.  The table below shows the mean difference and absolute mean difference computed between the observed and predicted Denver Tmax for the entire training period.  Because of the likelihood that the predictions will sometimes be larger and sometimes smaller than the observed and the mean of the differences will likely cancel out somewhat, the absolute mean difference is a much better measure of accuracy.  The phase shifting would appear to improve accuracy by almost 100%, but the question remains, how well is an accuracy of 4.46 degrees for monthly mean Tmax.  
+
+      <table border=1>
+        <thead>
+          <tr><th>&nbsp;</th><th>0 Month Shift</th><th>4 Month Shift</th></tr>
+        </thead>
+        <tr><td>Mean Diff</td><td>-0.14</td><td>-0.26</td></tr>
+        <tr><td>Absolute Mean Diff</td><td>7.78</td><td>4.46</td></tr>
+      </table>
+
+    </p>
+
+    <p>
+      To fully understand how well the 4.46 degrees in average difference is, more analysis is needed.  However, this would appear to be a good time to try a different approach, as 4.46 degrees actually seems fairly large, when you consider the standard deviation for the observed Tmax, from month to month, for Denver.  A better approach might be to use a neural network that is tuned for time series data, then perform a more detailed analysis, including seasonal analysis and long-term monthly difference. 
+    </p> 
+    <p>
+      One feature of the Regression models that is very useful is the ability to determine the importance of each independent variable in predicting the dependant variable.  This could be useful for our Neural Network by limiting the needed independent variables needed.  This could benefit both in improving the speed of the neural network and also the accuracy of the model.  Figure 5 shows the feature importance of the Climate Indices for the SVR model for a 4 month phase shift.  The most important features are:
+      <ol>
+        <li>Nina1</li>
+        <li>ONI</li>
+        <li>Nina 4</li>
+        <li>TNI</li>
+      </ol>   
+      Note that Nina 3 and Nina3-4 also have high importance, but these indices are very similar to nina 4, so including them might would like be repetitive and might skew the results of the neural network.  This would be a good extension for a follow-up analysis.  The rest of the features are significantly less important,  so the 4 noted above will be used for the neural network. 
+    </p>
+
+    <p><hr></p>
+    <h3>Figures</h3>
+    <p>
+     <br>
+     <figure>
+        <img src="Plots/regressionAllModels.png" style="">
+        <figcaption>Fig.1 - Results of different regression models when using all 14 Climate Inidices</figcaption>
+      </figure>
+      <table border="1" class="dataframe">
+        <thead>
+          <tr style="text-align: right;">
+            <th></th>
+            <th>SVR</th>
+            <th>Linear</th>
+            <th>Bayesian</th>
+            <th>ELN</th>
+            <th>Ridge</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>0</th>
+            <td>0.482065</td>
+            <td>0.542114</td>
+            <td>0.546807</td>
+            <td>-0.030174</td>
+            <td>0.545135</td>
+          </tr>
+          <tr>
+            <th>1</th>
+            <td>0.462724</td>
+            <td>0.491402</td>
+            <td>0.493748</td>
+            <td>-0.029524</td>
+            <td>0.493599</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>0.592105</td>
+            <td>0.667468</td>
+            <td>0.667745</td>
+            <td>-0.017244</td>
+            <td>0.667878</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>0.856253</td>
+            <td>0.875447</td>
+            <td>0.875492</td>
+            <td>0.168689</td>
+            <td>0.875488</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>0.910301</td>
+            <td>0.908498</td>
+            <td>0.907442</td>
+            <td>0.308542</td>
+            <td>0.907767</td>
+          </tr>
+          <tr>
+            <th>5</th>
+            <td>0.845614</td>
+            <td>0.834596</td>
+            <td>0.835411</td>
+            <td>0.210744</td>
+            <td>0.835248</td>
+          </tr>
+          <tr>
+            <th>6</th>
+            <td>0.641037</td>
+            <td>0.636639</td>
+            <td>0.638901</td>
+            <td>-0.028383</td>
+            <td>0.639127</td>
+          </tr>
+          <tr>
+            <th>7</th>
+            <td>0.525732</td>
+            <td>0.554783</td>
+            <td>0.556787</td>
+            <td>-0.028958</td>
+            <td>0.556836</td>
+          </tr>
+          <tr>
+            <th>8</th>
+            <td>0.544852</td>
+            <td>0.577909</td>
+            <td>0.580419</td>
+            <td>0.013697</td>
+            <td>0.580187</td>
+          </tr>
+          <tr>
+            <th>9</th>
+            <td>0.690920</td>
+            <td>0.702355</td>
+            <td>0.702305</td>
+            <td>0.189267</td>
+            <td>0.702280</td>
+          </tr>
+          <tr>
+            <th>10</th>
+            <td>0.825463</td>
+            <td>0.836203</td>
+            <td>0.833111</td>
+            <td>0.319097</td>
+            <td>0.833618</td>
+          </tr>
+          <tr>
+            <th>11</th>
+            <td>0.791588</td>
+            <td>0.783647</td>
+            <td>0.782722</td>
+            <td>0.195944</td>
+            <td>0.783055</td>
+          </tr>
+          <tr>
+            <th>12</th>
+            <td>0.551864</td>
+            <td>0.548909</td>
+            <td>0.553373</td>
+            <td>-0.028880</td>
+            <td>0.551634</td>
+          </tr>
+        </tbody>
+      </table>
+    </p>
+<p>
+    <figure>
+      <img src="Plots/Denver-Tmax-036.png" style="">
+      <figcaption>Fig.2 - First 24 months of  Denver Tmax, phase shifted at 0,3 and 6 months</figcaption>
+    </figure>
+
+</p>
+<p>
+  <figure>
+    <img src="Plots/Den-Tmax-0-first.png" style="">
+    <figcaption>Fig. 3a - Denver Obs and Pred Tmax for a 0 month phase shift, for the first 24 months of the training period</figcaption>
+  </figure>
+
+  <figure>
+    <img src="Plots/Den-Tmax-0-last.png" style="">
+    <figcaption>Fig. 3b - Denver Obs and Pred Tmax for a 0 month phase shift, for the last 24 months of the training period</figcaption>
+  </figure>
+
+  <figure>
+    <img src="Plots/Den-Tmax-4-first.png" style="">
+    <figcaption>Fig. 4a  - Denver Obs and Pred Tmax for a 4 month phase shift, for the first 24 months of the training period</figcaption>
+  </figure>
+  <figure>
+    <img src="Plots/Den-Tmax-4-last.png" style="">
+    <figcaption>Fig. 4b - Denver Obs and Pred Tmax for a 4 month phase shift, for the last 24 months of the training period</figcaption>
+  </figure>
+
+</p>
+<p>
+  <figure>
+    <img src="Plots/Den-Tmax-feats-4.png" style="">
+    <figcaption>Fig. 5  - Feature importance for the SVR model for Denver Tmax for a 4 month phase shift</figcaption>
+  </figure>
+</p>
+
+</body>
+
+</html>

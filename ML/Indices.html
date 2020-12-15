@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Climate Indicators</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Indices.html">Climate Indices</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="jumbotron">
+
+      
+      <h1 class="display-4">Climate Indicators</h1>
+      <hr class="my-4">
+      <h2>All data has been download from NOAA's <a href="https://psl.noaa.gov/data/climateindices/list/">Physical Science Lab ratory</a></h2>
+
+      <hr class="my-4">
+      <h2>AMMSST</h2>
+      <p>The Atlantic Meridional Model Sea Surface Temperature Index describes the meridional variability in the Tropical Atlantic Ocean.  This analysis is performed over the region from 21° South to 32° North and  74° West to 15° East using Sea Surface Temperatures.  More info can be found <a href="https://psl.noaa.gov/data/timeseries/monthly/AMM/">here.</a>
+      </p>
+      <p><img src="Plots/amm-domain.png"></p>  <p><img src="Plots/ammsst.png"></p>     
+
+      <hr class="my-4">
+      <h2>AMMWIND</h2>
+      <p>The Atlantic Meridional Model Surface Wind Index describes the meridional variability in the Tropical Atlantic Ocean.  This analysis is performed over the region from 21° South to 32° North and  74° West to 15° East using surface winds.  More info can be found <a href="https://psl.noaa.gov/data/timeseries/monthly/AMM/">here.</a>
+      </p>
+      <p><img src="Plots/amm-domain.png"></p>  
+      <p><img src="Plots/ammwind.png"></p>     
+    
+
+      <hr class="my-4">
+      <h2>AMO</h2>
+      <p>The Atlantic Multi-decadal Oscillation is an index of North Atlantic Sea Surface Temperatures, computed for the entire ocean from 0° - 70° North. The units may be C° or no units. More info can be found <a href="https://psl.noaa.gov/data/timeseries/AMO/">here.</a>
+      </p>
+      <p><img src="Plots/amo-domain.png"></p>
+      <p><img src="Plots/amo.png"></p>     
+
+
+      <hr class="my-4">
+      <h2>NINA 1-2</h2>
+      <p>This is the monthly mean Sea Surface Temperature (SST) taken in the box from  0° - 10° South and 90° West - 80° West.  This is one of several measurements that try to capture the El Nino-La Nina phenomena.  The values are in Degree's Centigrade (C°). 
+      </p>
+      <p><img src="Plots/nina12-domain.png"></p>     
+      <p><img src="Plots/nina1.png"></p>     
+ 
+
+     
+      <hr class="my-4">
+      <h2>NINA3</h2>
+      <p>This is the monthly mean Sea Surface Temperatures (SST) taken in the box from  5° South - 5° North and 150° West - 90° West.  This is one of several measurements that try to capture the El Nino-La Nina phenomena.  The values are in Degree's Centigrade (C). 
+      </p>
+      <p><img src="Plots/nina3-domain.png"></p> 
+      <p><img src="Plots/nina3.png"></p>     
+ 
+      
+      <hr class="my-4">
+      <h2>NINA 4</h2>
+      <p>This is the monthly mean Sea Surface Temperatures (SST) taken in the box from  5° South - 5° North and 160° East - 150° West.  This is one of several measurements that try to capture the El Nino-La Nina phenomena.  The values are in Degree's Centigrade (C). 
+      </p>
+      <p><img src="Plots/nina4-domain.png"></p>  
+      <p><img src="Plots/nina4.png"></p>     
+
+      <hr class="my-4">
+      <h2>ONI</h2>
+      <p>The Oceanic Nino Index is a 3 month running mean of Sea Surface Temperature computed over the area 5° South - 5° North and  170° East - 120° West. This is one of several measurements that try to capture the El Nino-La Nina phenomena.  The values are in Degree's Centigrade (C°). More info can be found <a href="https://www.cpc.ncep.noaa.gov/data/indices/">here</a>
+      </p>
+      <p><img src="Plots/oni-domain.png"></p>  
+      <p><img src="Plots/oni.png"></p>     
+
+
+      <hr class="my-4">
+      <h2>PNA</h2>
+      <p>The Pacific–North American tele-connection pattern (PNA) is a climatological term for a large-scale weather pattern with two modes, denoted positive and negative, and which relates the atmospheric circulation pattern over the North Pacific Ocean with the one over the North American continent.  The index can be computed different ways, with one common way being to use 500mb geopotential heights, normalized by the climatological geopotential heights, from the four points shown on the map below ((20°N,160°W),(45°N,165°W),(55°N,115°W),(30°N,85°W)).  The values have not units. More info can be found <a href="http://research.jisao.washington.edu/data/pna/">here</a> and <a href="https://www.daculaweather.com/4_pna_index.php#:~:text=The%20Pacific%E2%80%93North%20American%20teleconnection,over%20the%20North%20American%20continent.">here</a>
+      </p>
+      <p><img src="Plots/pna-domain.png"></p>  
+      <p><img src="Plots/pna.png"></p>     
+
+      <hr class="my-4">
+      <h2>TNA</h2>
+      <p>Tropical Southern Atlantic Index is the  anomaly of the average of the monthly SST from 0° - 20° South and 10° East - 30° West. The values are in Degree's Centigrade (C°). More info can be found <a href="https://stateoftheocean.osmc.noaa.gov/sur/atl/tna.php">here</a>
+      </p>
+      <p><img src="Plots/tna-domain.png"></p>  
+      <p><img src="Plots/tna.png"></p>     
+
+
+      <hr class="my-4">
+      <h2>TNI</h2>
+      <p>The Trans-Nino Index is the standardized Nino 1-2 minus the Niño 4 with a 5 month running mean applied which is then standardized using the 1950-1979 period. The values are in Degree's Centigrade (C°). More info can be found <a href="https://psl.noaa.gov/gcos_wgsp/Timeseries/TNI/">here</a>
+      </p>
+      <p><img src="Plots/tni-domain.png"></p> 
+      <p><img src="Plots/tni.png"></p>     
+ 
+
+      <hr class="my-4">
+      <h2>TSA</h2>
+      <p>The Tropical Southern Atlantic Index is the anomaly of the average of the monthly SST from 0° - 20° South and 10° East - 30° West. The values are in Degree's Centigrade (C°). More info can be found <a href="https://stateoftheocean.osmc.noaa.gov/sur/atl/tsa.php">here</a>
+      </p>
+      <p><img src="Plots/tsa-domain.png"></p>  
+      <p><img src="Plots/tsa.png"></p>     
+
+
+      <hr class="my-4">
+      <h2>QBO</h2>
+      <p>The Quasi-Biennial Oscillation is a monthly mean of the Zonal Wind component taken at 30mb.  It is computed as an area average taken along the equator for the entire globe.  The units are likely meters per second.More info can be found <a href="https://www.metoffice.gov.uk/weather/learn-about/weather/atmosphere/quasi-biennial-oscillation">here</a>
+      </p>
+      <p><img src="Plots/qbo-domain.png"></p>  
+      <p><img src="Plots/qbo.png"></p>     
+
+
+      <hr class="my-4">
+      <h2>WHWP</h2>
+      <p>The Western Hemisphere Warm Pool is a monthly anomaly of the ocean surface area warmer than 28.5°C in the Atlantic and eastern North Pacific, from roughly 12° South to 30° North and 115° West to 40° West.  More info can be found <a href="https://cmr.earthdata.nasa.gov/search/concepts/C1214428372-SCIOPS">here</a>
+      </p>
+      <p><img src="Plots/whwp-domain.png"></p> 
+      <p><img src="Plots/whwp.png"></p>     
+ 
+    </div>
+  </div>
+
+
+
+    
+ 
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
